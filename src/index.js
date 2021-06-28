@@ -1,15 +1,6 @@
-#!/usr/bin/env node
-
-import { Command } from 'commander';
-//import * as fs from 'fs';
-import path from 'path';
-//import { path1, path2, genDiff } from "../src/index.js";
-
 import * as fs from 'fs';
 //import path from 'path';
 import _ from 'lodash';
-
-const program = new Command();
 
 const getFileContent = (path) => fs.readFileSync(path, "utf8");
 const parseContentToData = (fileContent) => JSON.parse(fileContent);
@@ -40,6 +31,10 @@ const getDifference = (obj1, obj2, keyList) => {
     return "{\n" + difference + "}";
   };
 
+
+export const path1 = "/home/olga/frontend-project-lvl2/__fixtures__/filepath1.json";
+export const path2 = "/home/olga/frontend-project-lvl2/__fixtures__/filepath2.json";
+
 export const genDiff = (path1, path2) => {
     const firstPathData = prepareDataToCompare(path1);
     const secondPathData = prepareDataToCompare(path2);
@@ -47,26 +42,5 @@ export const genDiff = (path1, path2) => {
     return getDifference(firstPathData, secondPathData, keysList);
 };
 
-
-//const program = new Command();
-
-program
-    .version('0.0.1')
-    .description('Compares two configuration files and shows a difference.')
-    .arguments('<filepath1> <filepath2>')
-    .option('-f, --format [type]', 'output format')
-    .action((filepath1, filepath2) => {
-       const path1 = path.resolve(filepath1);
-       const path2 = path.resolve(filepath2);
-        console.log(genDiff(path1, path2));
-
-    })
-    .configureHelp({
-        reverseOptions: true
-    });
-
-    console.log('Привет!');
-    program.parse(process.argv);
-  //  const options = program.opts();
-    
-  //  if (options.genDiff) console.log(genDiff(path1, path2));
+//console.log(module);
+//console.log(genDiff(path1, path2));
