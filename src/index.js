@@ -2,45 +2,43 @@ import * as fs from 'fs';
 import path from 'path';
 import __ from 'lodash';
 
-const getFileContent = (path) => fs.readFileSync(path, 'utf8');
+const getFileContent = (filePath) => fs.readFileSync(filePath, 'utf8');
 const parseContentToData = (fileContent) => JSON.parse(fileContent);
 
-const prepareDataToCompare = (path) => {
-  const textFromFile = getFileContent(path);
+const prepareDataToCompare = (filePath) => {
+  const textFromFile = getFileContent(filePath);
   return parseContentToData(textFromFile);
 };
 
 const createKeysList = (obj1, obj2) => __.union(Object.keys(obj1), Object.keys(obj2)).sort();
 
 const parseFiles = (obj1, obj2, keyList) => {
-  let result = '';
-  for (const key of keyList) {
-    if (__.has(obj1, key) && __.has(obj2, key)) { // ключи есть везде и
-      if (__.isEqual(obj1[key], obj2[key])) { // значения ключей совпадают
-        result += `    ${key}: ${obj2[key]}\n`;
-      } else {
-        result += `  - ${key}: ${obj1[key]}\n`; // значения ключей не совпадают и выводим оба значения.
-        result += `  + ${key}: ${obj2[key]}\n`;
+  const difference = keyList.map((key) => {
+    if (__.has(obj1, key) && __.has(obj2, key)) {
+      if (__.isEqual(obj1[key], obj2[key])) {
+        return `    ${key}: ${obj2[key]}`;
       }
+      return `  - ${key}: ${obj1[key]}\n  + ${key}: ${obj2[key]}`;
     }
     if (!__.has(obj2, key)) {
-      result += `  - ${key}: ${obj1[key]}\n`; // ключ только в первом объекте
+      return `  - ${key}: ${obj1[key]}`;
     }
     if (!__.has(obj1, key)) {
-      result += `  + ${key}: ${obj2[key]}\n`; // ключ только во втором объекте
+      return `  + ${key}: ${obj2[key]}`;
     }
-  }
+    return difference;
+  });
+  const result = difference.join('\n');
   return `{\n${result}}`;
 };
 
-export const genDiff = (path1, path2) => {
-  path1 = path.resolve(path1);
-  path2 = path.resolve(path2);
+const genDiff = (path1, path2) => {
+  const path1Resolved = path.resolve(path1);
+  const path2esolved = path.resolve(path2);
 
-  const firstPathData = prepareDataToCompare(path1);
-  const secondPathData = prepareDataToCompare(path2);
-  const keysList = createKeysList(firstPathData, secondPathData);
-  return parseFiles(firstPathData, secondPathData, keysList);
+  const path1Data = prepareDataToCompare(path1Resolved);
+  const path2Data = prepareDataToCompare(path2esolved);
+  const keysList = createKeysList(path1Data, path2Data);
+  return parseFiles(path1Data, path2Data, keysList);
 };
-
-// export default genDiff;
+export default genDiff;
