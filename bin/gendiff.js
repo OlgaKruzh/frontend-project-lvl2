@@ -18,5 +18,5 @@ program
     reverseOptions: true,
   });
 
-console.log('Привет!');
+// console.log('Привет!');
 program.parse(process.argv);

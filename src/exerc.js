@@ -9,3 +9,8 @@ console.log(`Current directory: ${process.cwd()}`);
 
 const root = path.dirname('src');
 console.log(root);
+path.basename(process.cwd());
+console.log(process.cwd());
+path.basename(path.resolve());
+
+console.log(path.basename(path.resolve(process.cwd())));
