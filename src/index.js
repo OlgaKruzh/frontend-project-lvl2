@@ -29,7 +29,7 @@ const parseFiles = (obj1, obj2, keyList) => {
     return difference;
   });
   const result = difference.join('\n');
-  return `{\n${result}}`;
+  return `{\n${result}\n}`;
 };
 
 const genDiff = (path1, path2) => {
