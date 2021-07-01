@@ -5,6 +5,8 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ac7f752f90446f54a165/test_coverage)](https://codeclimate.com/github/OlgaKruzh/frontend-project-lvl2/test_coverage)
 
+[![Build Status](https://travis-ci.com/OlgaKruzh/frontend-project-lvl2.svg?branch=main)](https://travis-ci.com/OlgaKruzh/frontend-project-lvl2)
+
 ## Asciinema:
 
 **gendiff**
