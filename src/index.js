@@ -36,10 +36,10 @@ const parseFiles = (obj1, obj2, keyList) => {
       if (__.isEqual(obj1[key], obj2[key])) {
         return `    ${key}: ${obj2[key]}`;
       }
-      return `  - ${key}: ${obj1[key]}\n  + ${key}: ${obj2[key]}`;
+      return `  ${"-"} ${key}: ${obj1[key]}\n  + ${key}: ${obj2[key]}`;
     }
     if (!__.has(obj2, key)) {
-      return `  - ${key}: ${obj1[key]}`;
+      return `  ${"-"} ${key}: ${obj1[key]}`;
     }
     if (!__.has(obj1, key)) {
       return `  + ${key}: ${obj2[key]}`;
