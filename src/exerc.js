@@ -65,3 +65,21 @@ console.log(myPath); //= > /home/olga/frontend-project-lvl2/src/src/index.js
 // };
 
 // getFileContent('filepath2.json');
+console.log(`
+{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}`);
+
+console.log(`{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}`);
