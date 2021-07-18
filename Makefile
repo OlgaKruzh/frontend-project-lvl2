@@ -12,6 +12,9 @@ test:
 
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
+
+watch:
+	npm test --watch
 	
-	
+
 .PHONY: test
