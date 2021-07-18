@@ -6,7 +6,7 @@ export const getExtention = (filepath) => path.extname(filepath).toLowerCase();
 
 export const readFile = (filePath) => {
   const extention = getExtention(filePath);
-  if (extention === '.json' || extention === '.yml') {
+  if (extention === '.json') {
     return JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath), 'utf8'));
   }
   return 'it is not JSON file';
@@ -68,9 +68,9 @@ export const getExtension = (filePath) => {
   return basename.slice(pos + 1);
 };
 
-const createCurrentPath = (filePath) => path.resolve(process.swd(), filePath);
+// const createCurrentPath = (filePath) => path.resolve(process.swd(), filePath);
 
-const parse = (content) => JSON.parse(content);
+// const parse = (content) => JSON.parse(content);
 
 // export const getContentInJsonFormat = (filePath) => {
 //   if (isJSON(filePath)) {
