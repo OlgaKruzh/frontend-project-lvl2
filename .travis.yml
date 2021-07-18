@@ -12,3 +12,15 @@
    
 #     - make testnotification:
 #   email: false
+
+language: node_jsnode_js:
+  - node env:
+  global:
+    - CC_TEST_REPORTER_ID=<secrets.CODECLIMAT_COVERAGE>before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-buildscript:
+  - make lint
+  - make test-coverageafter_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT notifications:
+  email: false
