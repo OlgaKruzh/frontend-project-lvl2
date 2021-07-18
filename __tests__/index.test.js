@@ -4,12 +4,9 @@ import path, { dirname } from 'path';
 // import { jest } from '@jest/globals';
 import compareData from '../src/index.js';
 
-
- 
- const __filename = fileURLToPath(import.meta.url);
- const __dirname = dirname(__filename);
- const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 const path1 = '__fixtures__/filepath1.json';
 const path2 = '__fixtures__/filepath2.json';
@@ -26,9 +23,8 @@ const expectedValue1 = `{
   + verbose: true
 }`;
 
-test('compareData1', () => {
+test('compareData test', () => {
   expect(compareData(path1, path2)).toEqual(expectedValue);
   expect(compareData(path3, path4)).toEqual(expectedValue);
   expect(compareData(path3, path4)).toEqual(expectedValue1);
-
 });

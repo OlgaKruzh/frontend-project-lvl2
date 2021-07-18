@@ -4,7 +4,6 @@ import path, { dirname } from 'path';
 // для тестирования
 import { fileURLToPath } from 'url';
 
-
 // const expectedValue = `
 //  {
 //     - follow: false
@@ -53,7 +52,7 @@ const myPath = path.resolve(__dirname, filename);
 const myPath1 = path.resolve(__dirname, 'filename.js');// => /home/olga/frontend-project-lvl2/src/filename.js
 console.log(myPath); //= > /home/olga/frontend-project-lvl2/src/src/index.js
 const filename1 = 'filepath1.json';
-const getFixturePath1 = (filename1) => path.join(__dirname, '..', '__fixtures__', filename1); // => 
+const getFixturePath1 = (filename1) => path.join(__dirname, '..', '__fixtures__', filename1); // =>
 // /home/olga/frontend-project-lvl2/__fixtures__/filepath1.json  join отбрасывает первый сегмент пути
 console.log(getFixturePath1(filename1));
 // export const getFileContent = (filepath) => {

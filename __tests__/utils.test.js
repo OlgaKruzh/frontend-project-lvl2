@@ -1,22 +1,27 @@
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-import { getExtention, readFile, createKeysList, compareObjects} from '../src/utils.js';
-
+import {
+  getExtention, readFile, createKeysList, showDifference, compareObjects,
+} from '../src/utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
- const __dirname = dirname(__filename);
- const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const __dirname = dirname(__filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
- const path1 = '__fixtures__/filepath1.json';
- const path2 = getFixturePath('fileYml.yml');
- const path3 = getFixturePath('__fixtures__/expected_file.txt');
- const path4 = getFixturePath('expected_file.txt');
+const path1 = '__fixtures__/filepath1.json';
+const path2 = getFixturePath('fileYml.yml');
+const path3 = getFixturePath('__fixtures__/expected_file.txt');
+const path4 = getFixturePath('expected_file.txt');
 
- const user1 = {name: "Anna", age: 19, hobby: "gaming", alias: "An"};
- const user2 = {name: "Victor", alias: "Vik", profession: "doctor", hobby: "gaming"};
- const expectedKeyList = ["age", "alias", "hobby", "name", "profession" ];
- const expectedCompareObjectsResult = `{
+const user1 = {
+  name: 'Anna', age: 19, hobby: 'gaming', alias: 'An',
+};
+const user2 = {
+  name: 'Victor', alias: 'Vik', profession: 'doctor', hobby: 'gaming',
+};
+const expectedKeyList = ['age', 'alias', 'hobby', 'name', 'profession'];
+const expectedCompareObjectsResult = `{
   - age: 19
   - alias: An
   + alias: Vik
@@ -26,20 +31,21 @@ const __filename = fileURLToPath(import.meta.url);
   + profession: doctor
 }`;
 
+test('getExtention', () => {
+  expect(getExtention(path1)).toEqual('.json');
+  expect(getExtention(path2)).toEqual('.yml');
+  expect(getExtention(path3)).toEqual('.txt');
+  expect(getExtention(path4)).toEqual('.txt');
+});
 
- test('getExtention', () => {
+test('createKeysList', () => {
+  expect(createKeysList(user1, user2)).toEqual(expectedKeyList);
+});
 
-    expect(getExtention(path1)).toEqual('.json');
-    expect(getExtention(path2)).toEqual('.yml');
-    expect(getExtention(path3)).toEqual('.txt');
-    expect(getExtention(path4)).toEqual('.txt');
-  
-  });
+test('showDifference', () => {
+  expect(showDifference(user1, user2, expectedKeyList)).toEqual(expectedCompareObjectsResult);
+});
 
-  test('createKeysList', () => {
-    expect(createKeysList(user1, user2)).toEqual(expectedKeyList);
-  });
-
-  test('compareObjects', () => {
-    expect(compareObjects(user1, user2, expectedKeyList)).toEqual(expectedCompareObjectsResult);
-  });
+test('compareObjects', () => {
+  expect(compareObjects(user1, user2)).toEqual(expectedCompareObjectsResult);
+});
