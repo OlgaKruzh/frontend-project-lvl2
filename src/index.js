@@ -1,4 +1,4 @@
-import { compareObjects, createKeysList, readFile } from './utils.js';
+import { compareObjects, readFile } from './utils.js';
 
 const compareData = (filePathFromUser1, filePathFromUser2) => {
   const data1 = readFile(filePathFromUser1);
