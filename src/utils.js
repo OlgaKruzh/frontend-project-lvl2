@@ -2,13 +2,17 @@ import * as fs from 'fs';
 import path from 'path';
 import __ from 'lodash';
 
-const isJSON = (filepath) => path.extname(filepath).toLowerCase() === 'json' || 'yml'; // проверить расширение альтернатива
+export const getExtention = (filepath) => path.extname(filepath).toLowerCase();
+   // проверить расширение альтернатива
 
-export const getContentInJsonFormat = (filePath) => {
-  if (isJSON(filePath)) {
+export const readFile = (filePath) => {
+  const extention = getExtention(filePath);
+  if (extention === '.json' || extention === '.yml') {
     return JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath), 'utf8'));
+  } else {
+    return 'it is not JSON file';
   }
-  return 'it is not JSON file';
+  
 };
 
 export const createKeysList = (obj1, obj2) => __.union(Object.keys(obj1), Object.keys(obj2)).sort();
