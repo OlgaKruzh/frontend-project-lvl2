@@ -8,8 +8,7 @@
 [![Build Status](https://travis-ci.com/OlgaKruzh/frontend-project-lvl2.svg?branch=main)](https://travis-ci.com/OlgaKruzh/frontend-project-lvl2)
 
 [![hello-world](https://github.com/OlgaKruzh/frontend-project-lvl2/actions/workflows/hello-world.yml/badge.svg)](https://github.com/OlgaKruzh/frontend-project-lvl2/actions/workflows/hello-world.yml)
-
-
+[![My tests](https://github.com/OlgaKruzh/frontend-project-lvl2/actions/workflows/my-tests.yml/badge.svg)](https://github.com/OlgaKruzh/frontend-project-lvl2/actions/workflows/my-tests.yml)
 
 ## Asciinema:
 
