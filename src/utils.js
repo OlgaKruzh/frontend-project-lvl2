@@ -3,7 +3,6 @@ import path from 'path';
 import __ from 'lodash';
 
 export const getExtention = (filepath) => path.extname(filepath).toLowerCase();
-// проверить расширение альтернатива
 
 export const readFile = (filePath) => {
   const extention = getExtention(filePath);
@@ -83,3 +82,6 @@ const parse = (content) => JSON.parse(content);
 //     }
 //   }
 // };
+
+// fs.existsSync(myPath);
+// fs.lstatSync(myPath).isFile();

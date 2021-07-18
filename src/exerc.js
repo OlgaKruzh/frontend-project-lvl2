@@ -55,20 +55,7 @@ const filename1 = 'filepath1.json';
 const getFixturePath1 = (filename1) => path.join(__dirname, '..', '__fixtures__', filename1); // =>
 // /home/olga/frontend-project-lvl2/__fixtures__/filepath1.json  join отбрасывает первый сегмент пути
 console.log(getFixturePath1(filename1));
-// export const getFileContent = (filepath) => {
-// const myPath = getFixturePath(filepath);
-// //const myPath = path.resolve(filepath);
-// fs.existsSync(myPath);
-// fs.lstatSync(myPath).isFile();
-// const extention = path.extname(myPath);
-// const content = fs.readFileSync(filepath, 'utf8');
-// console.log('расширение ' + extention);
-// console.log(content);
-// //return content;
 
-// };
-
-// getFileContent('filepath2.json');
 console.log(`
 {
   - follow: false

@@ -10,7 +10,6 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 const path1 = '__fixtures__/filepath1.json';
-const path2 = getFixturePath('fileYml.yml');
 const path3 = getFixturePath('__fixtures__/expected_file.txt');
 const path4 = getFixturePath('expected_file.txt');
 
@@ -33,7 +32,6 @@ const expectedCompareObjectsResult = `{
 
 test('getExtention', () => {
   expect(getExtention(path1)).toEqual('.json');
-  expect(getExtention(path2)).toEqual('.yml');
   expect(getExtention(path3)).toEqual('.txt');
   expect(getExtention(path4)).toEqual('.txt');
 });
