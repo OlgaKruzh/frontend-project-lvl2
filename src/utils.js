@@ -1,14 +1,14 @@
 import path from 'path';
 import __ from 'lodash';
-import parse from './parsers.js';
+import parsers from './parsers.js';
 
 export const getExtention = (filepath) => path.extname(filepath).toLowerCase();
 
-export const parseContent = (content) => parse(content);
+export const parseContent = (content) => parsers(content);
 
 // const
 
-export const readFile = (filePath) => parse(filePath);
+export const readFile = (filePath) => parsers(filePath);
 
 // export const readFile = (filePath) => {
 //   const extention = getExtention(filePath);

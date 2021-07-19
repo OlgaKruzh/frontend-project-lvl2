@@ -1,5 +1,5 @@
 
-import { parse } from '../src/parsers.js';
+import  parsers  from '../src/parsers.js';
 
 const path1 = '__fixtures__/filepath1.yml';
 const expectedValue = {
@@ -12,5 +12,5 @@ const expectedValue = {
 
 test('parse test', () => {
    
-    expect(parse(path1)).toEqual(expectedValue);  
+    expect(parsers(path1)).toEqual(expectedValue);  
   });

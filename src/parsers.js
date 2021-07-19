@@ -2,7 +2,7 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 
-const parse = (filepath) => {
+const parsers = (filepath) => {
   const extention = path.extname(filepath);
   if (extention.toLowerCase() === '.yml' || extention.toLowerCase() === '.yaml') {
     return yaml.load(fs.readFileSync(path.resolve(process.cwd(), filepath), 'utf8'));
@@ -12,7 +12,7 @@ const parse = (filepath) => {
   return 'format is not valid';
 };
 
-export default parse;
+export default parsers;
 // try {
 //     const doc = yaml.load(fs.readFileSync(path.resolve(process.cwd(), filePath), 'utf8'));
 //     return doc;
