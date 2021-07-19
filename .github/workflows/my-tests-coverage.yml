@@ -1,5 +1,5 @@
 # Name of workflow
-name: My tests
+name: My tests coverage
 
 # Trigger the workflow on push or pull request
 on:

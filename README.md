@@ -8,6 +8,7 @@
 
 **gendiff**
 [![asciicast](https://asciinema.org/a/423201.svg)](https://asciinema.org/a/423201)
+[![asciicast](https://asciinema.org/a/426264.svg)](https://asciinema.org/a/426264)
 
 
 for asciinema installation: `apt install asciinema`

@@ -1,16 +1,22 @@
-import * as fs from 'fs';
 import path from 'path';
 import __ from 'lodash';
+import parse from './parsers.js';
 
 export const getExtention = (filepath) => path.extname(filepath).toLowerCase();
 
-export const readFile = (filePath) => {
-  const extention = getExtention(filePath);
-  if (extention === '.json') {
-    return JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath), 'utf8'));
-  }
-  return 'it is not JSON file';
-};
+export const parseContent = (content) => parse(content);
+
+// const
+
+export const readFile = (filePath) => parse(filePath);
+
+// export const readFile = (filePath) => {
+//   const extention = getExtention(filePath);
+//   if (extention === '.json') {
+//     return JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath), 'utf8'));
+//   }
+//   return 'it is not JSON file';
+// };
 
 export const createKeysList = (obj1, obj2) => __.union(Object.keys(obj1), Object.keys(obj2)).sort();
 

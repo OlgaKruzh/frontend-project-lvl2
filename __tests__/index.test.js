@@ -13,6 +13,9 @@ const path2 = '__fixtures__/filepath2.json';
 const path3 = getFixturePath('filepath1.json');
 const path4 = getFixturePath('filepath2.json');
 
+const path5 = '__fixtures__/filepath1.yml';
+const path6 = '__fixtures__/filepath2.yml';
+
 const expectedValue = fs.readFileSync('__fixtures__/expected_file.txt', 'utf8');
 const expectedValue1 = `{
   - follow: false
@@ -23,8 +26,15 @@ const expectedValue1 = `{
   + verbose: true
 }`;
 
-test('compareData test', () => {
+test('compareData json test', () => {
   expect(compareData(path1, path2)).toEqual(expectedValue);
   expect(compareData(path3, path4)).toEqual(expectedValue);
   expect(compareData(path3, path4)).toEqual(expectedValue1);
 });
+
+test('compareData yaml test', () => {
+  expect(compareData(path5, path6)).toEqual(expectedValue);
+  expect(compareData(path5, path6)).toEqual(expectedValue1);
+});
+
+
